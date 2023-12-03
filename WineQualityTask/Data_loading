@@ -1,1 +1,14 @@
+import csv
+import requests
 
+# URL файла CSV на GitHub
+csv_url = 'https://github.com/DmitryAVeselov/Netology/blob/c40498ab437f76fffd1f406fc6a328d56d065850/WineQualityTask/winequalityN.csv'
+
+# Загрузка файла CSV
+response = requests.get(csv_url)
+content = response.content.decode('utf-8')
+
+# Чтение CSV данных
+csv_data = csv.reader(content.splitlines(), delimiter=',')
+for row in csv_data:
+    print(row)
